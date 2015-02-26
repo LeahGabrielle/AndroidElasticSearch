@@ -75,11 +75,10 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		
-		
-
 		// Refresh the list when visible
 		// TODO: Search all
-		
+		search(movieList);
+		notifyUpdated();
 	}
 	
 	/** 
@@ -104,8 +103,11 @@ public class MainActivity extends Activity {
 		movies.clear();
 
 		// TODO: Extract search query from text view
-		
+		movieManager.searchMovies("","");
 		// TODO: Run the search thread
+		
+		SearchThread st = new SearchThread();
+		
 		
 	}
 	
@@ -132,6 +134,11 @@ public class MainActivity extends Activity {
 
 	class SearchThread extends Thread {
 		// TODO: Implement search thread
+		private int movieId;
+		
+		public SearchThread(int movieId) {
+			this.movieId = movieId;
+		}
 		
 	}
 
